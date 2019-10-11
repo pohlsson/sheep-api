@@ -1,12 +1,12 @@
 package com.sheepfarm;
 
-import com.sheepfarm.database.SheepDao;
+import com.hubspot.dropwizard.guice.GuiceBundle;
+import com.sheepfarm.modules.SheepDaoModule;
 import com.sheepfarm.resources.Login;
-import com.sheepfarm.resources.SheepResource;
+import com.sheepfarm.resources.SheepManagement;
 import io.dropwizard.Application;
-import io.dropwizard.jdbi3.JdbiFactory;
+import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-import org.jdbi.v3.core.Jdbi;
 
 public class App extends Application<AppConfiguration> {
 
@@ -20,10 +20,19 @@ public class App extends Application<AppConfiguration> {
     }
 
     @Override
+    public void initialize(Bootstrap<AppConfiguration> bootstrap) {
+        GuiceBundle<AppConfiguration> guiceBundle = GuiceBundle.<AppConfiguration>newBuilder()
+            .addModule(new SheepDaoModule())
+            .setConfigClass(AppConfiguration.class)
+            .enableAutoConfig(getClass().getPackage().getName())
+            .build();
+        bootstrap.addBundle(guiceBundle);
+    }
+
+    @Override
     public void run(AppConfiguration configuration, Environment environment) {
-        final JdbiFactory factory = new JdbiFactory();
-        final Jdbi jdbi = factory.build(environment, configuration.getDataSourceFactory(), "postgresql");
-        environment.jersey().register(new Login(jdbi.onDemand(SheepDao.class)));
-        environment.jersey().register(new SheepResource(jdbi.onDemand(SheepDao.class)));
+
+        environment.jersey().register(new Login());
+        environment.jersey().register(new SheepManagement());
     }
 }

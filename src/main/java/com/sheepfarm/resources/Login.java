@@ -2,6 +2,8 @@ package com.sheepfarm.resources;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
 import com.sheepfarm.api.Sheep;
 import com.sheepfarm.api.UserData;
 import com.sheepfarm.database.SheepDao;
@@ -15,16 +17,17 @@ import javax.ws.rs.Produces;
 @Produces(APPLICATION_JSON)
 public class Login {
 
+    @Inject @Named("sheepDao")
     private SheepDao dao;
 
-    public Login(SheepDao dao) {
-        this.dao = dao;
+    public Login() {
+
     }
 
     @PUT
     public List<Sheep> authenticate(UserData userData) {
         if(userIsAuthenticated(userData)) {
-            return dao.selectSheepByOwner(userData.getUsername());
+            return this.dao.selectSheepByOwner(userData.getUsername());
         }
         return Collections.emptyList();
     }
