@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+}
+
+group 'com.sheepfarm'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'io.dropwizard', name: 'dropwizard-core', version: '1.3.15'
+    compile group: 'io.dropwizard', name: 'dropwizard-jdbi3', version: '1.3.0-rc5'
+    compile group: 'ru.vyarus.guicey', name: 'guicey-jdbi3', version: '0.5.0'
+    compile group: 'com.h2database', name: 'h2', version: '1.4.193'
+    compile group: 'postgresql', name: 'postgresql', version: '9.1-901-1.jdbc4'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+
+jar {
+    manifest {
+        attributes "Main-Class": "com.sheepfarm.App"
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
