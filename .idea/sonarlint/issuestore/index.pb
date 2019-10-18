@@ -13,5 +13,11 @@ Z
 *src/main/java/com/sheepfarm/api/Sheep.java,0/f/0fac060d6d628250fa7346c8951bdeeb8637c19b
 `
 0src/main/java/com/sheepfarm/resources/Login.java,e/8/e807a59d09a878e4d94aeb0555691e97d278c37f
-h
-8src/main/java/com/sheepfarm/resources/SheepResource.java,c/1/c1899199ff9f95241d36aea5065b58f3692f6826
+j
+:src/main/java/com/sheepfarm/resources/SheepManagement.java,c/0/c0a696aef076434ac87d7394cf68684e849690d6
+g
+7src/main/java/com/sheepfarm/modules/SheepDaoModule.java,f/c/fc6e06d71c7f307e230d33580dfb803c8a01b1c1
+?
+settings.gradle,0/5/05efc8b1657769a27696d478ded1e95f38737233
+7
+gradlew,5/b/5bbfa66edb4db3c7c33c5181f43510990d3307f9
