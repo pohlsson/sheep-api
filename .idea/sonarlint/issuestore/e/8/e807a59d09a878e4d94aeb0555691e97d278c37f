@@ -1,5 +1,3 @@
 
-V
-squid:S106"9Replace this use of System.out or System.err by a logger.(¢ý’·8ó±ð¤Ý-
-Fsquid:S1172 "/Remove this unused method parameter "userData".(Ïµ¥–
-Zsquid:S2589"7Remove this expression which always evaluates to "true"(ÝÒœ±ýÿÿÿÿ8„¹ÚÏÛ-
+Zsquid:S2589"7Remove this expression which always evaluates to "true"(ÝÒœ±ýÿÿÿÿ8„¹ÚÏÛ-
+Fsquid:S1172"/Remove this unused method parameter "userData".(Ïµ¥–

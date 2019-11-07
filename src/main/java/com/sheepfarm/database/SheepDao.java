@@ -16,10 +16,8 @@ public interface SheepDao {
     @SqlUpdate("INSERT INTO sheep(name, owner, happiness) VALUES (:name, :owner, :happiness)")
     void insertSheep(@BindBean Sheep sheep);
 
-
-    @SqlQuery("UPDATE sheep SET happiness = :happiness WHERE owner = :s.owner")
-    @RegisterBeanMapper(Sheep.class)
-    Sheep updateSheepHappiness(@BindBean Sheep sheep);
+    @SqlUpdate("UPDATE sheep SET happiness = :happiness WHERE owner = :owner")
+    void updateSheepHappiness(@Bind("owner") String owner, @Bind("happiness") int happiness);
 
     @SqlUpdate("DELETE FROM sheep WHERE owner = :owner")
     void deleteSheepByOwner(@Bind("owner") String owner);

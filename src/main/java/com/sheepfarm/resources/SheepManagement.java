@@ -4,10 +4,10 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 import com.google.inject.Inject;
 import com.sheepfarm.api.Sheep;
-import com.sheepfarm.api.UserData;
 import com.sheepfarm.database.SheepDao;
 import javax.inject.Named;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -28,12 +28,18 @@ public class SheepManagement {
     }
 
     @POST
-    public Sheep updateSheep() {
-        return null;
+    public void updateSheepHappiness(Sheep sheep) {
+        this.dao.updateSheepHappiness(sheep.getOwner(), sheep.getHappiness());
+    }
+
+    @GET
+    public Sheep getSheepByOwner(@QueryParam("owner") String owner) {
+        System.out.println(owner);
+        return this.dao.selectSheepByOwner(owner);
     }
 
     @DELETE
-    public void deleteSheepBy(@QueryParam("owner") String owner) {
+    public void deleteSheepByOwner(@QueryParam("owner") String owner) {
         this.dao.deleteSheepByOwner(owner);
     }
 }

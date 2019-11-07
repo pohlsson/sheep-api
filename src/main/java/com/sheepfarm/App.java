@@ -7,10 +7,6 @@ import com.sheepfarm.resources.SheepManagement;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-import java.util.EnumSet;
-import javax.servlet.DispatcherType;
-import javax.servlet.FilterRegistration;
-import org.eclipse.jetty.servlets.CrossOriginFilter;
 
 public class App extends Application<AppConfiguration> {
 
